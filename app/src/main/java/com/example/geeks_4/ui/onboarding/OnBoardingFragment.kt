@@ -9,7 +9,7 @@ import com.example.geeks_4.databinding.FragmentOnBoardingBinding
 import androidx.navigation.fragment.findNavController
 
 
-class OnBoardingFragment : Fragment() {
+class  OnBoardingFragment : Fragment() {
 
     private lateinit var binding: FragmentOnBoardingBinding
     private val adapter = Adapter(this::onClick)
@@ -17,7 +17,8 @@ class OnBoardingFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentOnBoardingBinding.inflate(inflater,container,false)
+        binding = FragmentOnBoardingBinding
+            .inflate(inflater,container,false)
         return binding.root
 
     }
@@ -30,3 +31,4 @@ class OnBoardingFragment : Fragment() {
         findNavController().navigateUp()
     }
 }
+

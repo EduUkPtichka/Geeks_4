@@ -23,7 +23,6 @@
         app:dotsSpacing="4dp"
         app:dotsStrokeWidth="2dp"
         android:layout_margin="16dp"
-
         />
 
 
