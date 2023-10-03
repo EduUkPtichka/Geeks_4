@@ -12,8 +12,7 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.widget.addTextChangedListener
-import com.example.geeks_4.R
-import com.example.geeks_4.data.Pref
+import com.example.geeks_4.data.local.Pref
 import com.example.geeks_4.databinding.FragmentProfileBinding
 import com.example.geeks_4.utils.loadImage
 

@@ -1,4 +1,4 @@
-package com.example.geeks_4.data
+package com.example.geeks_4.data.local
 
 import android.content.Context
 import android.content.Context.MODE_PRIVATE

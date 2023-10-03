@@ -11,7 +11,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.geeks_4.databinding.ActivityMainBinding
-import com.example.geeks_4.data.Pref
+import com.example.geeks_4.data.local.Pref
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,27 +36,19 @@ class MainActivity : AppCompatActivity() {
 
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
+                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications, R.id.navigation_account
             )
         )
 
-        navController.addOnDestinationChangedListener(
-            object : NavController.OnDestinationChangedListener {
-
-            override fun onDestinationChanged(
-                controller: NavController,
-                destination: NavDestination,
-                arguments: Bundle?
-            ) {
-                if (destination.id == R.id.onBoardingFragment) {
-                    navView.isVisible = false
-                    supportActionBar?.hide()
-                } else {
-                    navView.isVisible = true
-                    supportActionBar?.show()
-                }
+        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+            if (destination.id == R.id.onBoardingFragment) {
+                navView.isVisible = false
+                supportActionBar?.hide()
+            } else {
+                navView.isVisible = true
+                supportActionBar?.show()
             }
-        })
+        }
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)

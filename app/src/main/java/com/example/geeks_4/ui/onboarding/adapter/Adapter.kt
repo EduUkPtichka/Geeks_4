@@ -1,4 +1,4 @@
-package com.example.geeks_4.ui.onboarding
+package com.example.geeks_4.ui.onboarding.adapter
 
 
 import android.view.LayoutInflater

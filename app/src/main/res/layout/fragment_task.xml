@@ -8,12 +8,16 @@
     tools:context=".ui.task.TaskFragment">
 
     <EditText
+        android:background="@drawable/text_border"
+        android:padding="16dp"
         android:id="@+id/et_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Title" />
 
     <EditText
+        android:background="@drawable/text_border"
+        android:padding="16dp"
         android:id="@+id/et_desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

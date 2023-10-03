@@ -7,7 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.geeks_4.databinding.FragmentOnBoardingBinding
 import androidx.navigation.fragment.findNavController
-import com.example.geeks_4.data.Pref
+import com.example.geeks_4.data.local.Pref
+import com.example.geeks_4.ui.onboarding.adapter.Adapter
 
 
 class  OnBoardingFragment : Fragment() {
@@ -25,13 +26,14 @@ class  OnBoardingFragment : Fragment() {
         binding = FragmentOnBoardingBinding
             .inflate(inflater,container,false)
         return binding.root
-
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.viewPager.adapter = adapter
         binding.indicator.attachTo(binding.viewPager)
     }
+
     private fun onClick(){
         pref.userShowed()
         findNavController().navigateUp()

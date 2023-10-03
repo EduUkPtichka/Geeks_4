@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.findNavController
+import com.example.geeks_4.App
 import com.example.geeks_4.R
 import com.example.geeks_4.databinding.ActivityMainBinding
 import com.example.geeks_4.databinding.FragmentTaskBinding
@@ -21,7 +22,6 @@ class TaskFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         binding = FragmentTaskBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -38,7 +38,9 @@ class TaskFragment : Fragment() {
                     desc = binding.etDesc.text.toString()
                 )
 
-                setFragmentResult(RESULT_KEY, bundleOf(TASK_KEY to data))
+                App.db.taskDao().insert(data)
+
+                //setFragmentResult(RESULT_KEY, bundleOf(TASK_KEY to data))
                 findNavController().navigateUp()
             }
         }
