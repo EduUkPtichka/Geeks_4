@@ -7,9 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.geeks_4.databinding.FragmentOnBoardingBinding
 import androidx.navigation.fragment.findNavController
+import com.example.geeks_4.data.Pref
 
 
 class  OnBoardingFragment : Fragment() {
+
+    private val pref by lazy {
+        Pref(requireContext())
+    }
 
     private lateinit var binding: FragmentOnBoardingBinding
     private val adapter = Adapter(this::onClick)
@@ -28,6 +33,7 @@ class  OnBoardingFragment : Fragment() {
         binding.indicator.attachTo(binding.viewPager)
     }
     private fun onClick(){
+        pref.userShowed()
         findNavController().navigateUp()
     }
 }

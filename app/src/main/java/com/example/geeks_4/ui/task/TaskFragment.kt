@@ -39,7 +39,6 @@ class TaskFragment : Fragment() {
                 )
 
                 setFragmentResult(RESULT_KEY, bundleOf(TASK_KEY to data))
-
                 findNavController().navigateUp()
             }
         }
