@@ -12,6 +12,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.geeks_4.databinding.ActivityMainBinding
 import com.example.geeks_4.data.local.Pref
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,21 +35,34 @@ class MainActivity : AppCompatActivity() {
 
         if (!pref.isUserShow()) navController.navigate(R.id.onBoardingFragment)
 
+        if (FirebaseAuth.getInstance().currentUser?.uid.isNullOrBlank()) {
+            navController.navigate(R.id.phoneFragment)
+        }
+
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications, R.id.navigation_account
+                R.id.navigation_home,
+                R.id.navigation_dashboard,
+                R.id.navigation_notifications,
+                R.id.navigation_account
             )
         )
 
-        navController.addOnDestinationChangedListener { controller, destination, arguments ->
-            if (destination.id == R.id.onBoardingFragment) {
-                navView.isVisible = false
-                supportActionBar?.hide()
-            } else {
-                navView.isVisible = true
-                supportActionBar?.show()
+        val fragmentsWinthoutBottomnav = setOf(
+            R.id.acceptFragment,
+            R.id.phoneFragment,
+            R.id.onBoardingFragment,
+        )
+
+            navController.addOnDestinationChangedListener { controller, destination, arguments ->
+                if (fragmentsWinthoutBottomnav.contains(destination.id)) {
+                    navView.isVisible = false
+                    supportActionBar?.hide()
+                } else {
+                    navView.isVisible = true
+                    supportActionBar?.show()
+                }
             }
-        }
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
